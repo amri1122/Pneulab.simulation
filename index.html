@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pneulab - Media Simulasi Sistem Kendali Elektropneumatik untuk pembelajaran siswa Kelas XI TITL SMK Negeri 1 Padang">
+  <title>Pneulab — Media Simulasi Sistem Kendali Elektropneumatik (SMK N 1 Padang)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="assets/favicon-180x180.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header id="app-header" class="header">
+    <div class="header-left">
+      <!-- Pneulab Logo Badge (V2 Futuristik: Full di Desktop, Ikon P di Mobile) -->
+      <div class="header-logo header-logo-badge" title="Pneulab">
+        <picture class="app-logo-picture">
+          <source media="(max-width: 768px)" srcset="assets/logo-pneulab-icon.png">
+          <img src="assets/logo-pneulab-full.png" alt="Logo Pneulab" class="app-logo-img">
+        </picture>
+      </div>
+      <div class="header-title-group">
+        <div class="header-title-row">
+          <h1 class="header-title">Pneulab</h1>
+          <span class="header-tag">SMK N 1 PADANG</span>
+          <span id="header-material-badge" class="header-material-badge" style="display:none;">Materi 1</span>
+        </div>
+        <p class="header-subtitle">Media Simulasi Sistem Kendali Elektropneumatik — Kelas XI Teknik Instalasi Tenaga Listrik (TITL)</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="btn-diagnostics" class="btn btn-header btn-header-primary" title="Periksa Validitas & Aliran Rangkaian" aria-label="Periksa Validitas dan Aliran Rangkaian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span class="btn-text">Periksa Rangkaian</span>
+      </button>
+      <button id="btn-save" class="btn btn-header" title="Simpan Proyek ke Perangkat (.json) (Ctrl+S)" aria-label="Simpan Proyek ke Perangkat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span class="btn-text">Simpan</span>
+      </button>
+      <button id="btn-load" class="btn btn-header" title="Buka Proyek dari Perangkat (.json)" aria-label="Buka Proyek dari Perangkat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span class="btn-text">Buka</span>
+      </button>
+      <input type="file" id="file-input-project" accept=".json,application/json" style="display:none;" aria-hidden="true">
+      <button id="btn-home" class="btn btn-header" title="Beranda & Informasi" aria-label="Beranda dan Informasi">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="btn-text">Beranda</span>
+      </button>
+      <button id="btn-help" class="btn btn-header" title="Petunjuk Penggunaan Aplikasi" aria-label="Petunjuk Penggunaan Aplikasi">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span class="btn-text">Petunjuk</span>
+      </button>
+      <button id="btn-reset" class="btn btn-header btn-header-danger" title="Reset Area Kerja" aria-label="Reset Area Kerja">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        <span class="btn-text">Reset</span>
+      </button>
+      <div class="header-divider"></div>
+      <button id="btn-mode" class="btn btn-mode" title="Beralih antara Mode Edit dan Mode Simulasi" aria-label="Beralih antara Mode Edit dan Mode Simulasi">
+        <svg id="mode-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <span id="mode-label">Mode Edit</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <div id="app-container" class="app-container">
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <button id="sidebar-toggle" class="sidebar-toggle" title="Buka/Tutup Sidebar" aria-label="Buka atau Tutup Sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="sidebar-content">
+        <div class="sidebar-mobile-header">
+          <span class="sidebar-mobile-title">Menu & Materi</span>
+          <button id="sidebar-close" class="btn btn-icon sidebar-close-btn" title="Tutup Sidebar" aria-label="Tutup Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <!-- Material Navigation -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Materi Pembelajaran
+          </h3>
+          <nav id="material-nav" class="material-nav">
+            <button class="material-item" data-material="direct">
+              <span class="material-number">1</span>
+              <div class="material-item-text">
+                <span class="material-item-title">Rangkaian Pneumatik Langsung</span>
+                <span class="material-item-desc">Direct control katup 3/2 & silinder tunggal</span>
+              </div>
+            </button>
+            <button class="material-item" data-material="indirect">
+              <span class="material-number">2</span>
+              <div class="material-item-text">
+                <span class="material-item-title">Rangkaian Pneumatik Tak Langsung</span>
+                <span class="material-item-desc">Indirect control pilot 5/2 & silinder ganda</span>
+              </div>
+            </button>
+            <button class="material-item" data-material="electropneumatic">
+              <span class="material-number">3</span>
+              <div class="material-item-text">
+                <span class="material-item-title">Rangkaian Elektropneumatik</span>
+                <span class="material-item-desc">Solenoid valve 24V DC & ladder kelistrikan</span>
+              </div>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Menu Alat & Panduan
+          </h3>
+          <button id="btn-library-toggle" class="sidebar-menu-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="3" x2="8" y2="21"/></svg>
+            Library Komponen (ISO/IEC)
+          </button>
+          <button id="btn-save-browser" class="sidebar-menu-item" title="Simpan Rangkaian ke Browser (LocalStorage)" aria-label="Simpan Rangkaian ke Browser">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Simpan di Browser
+          </button>
+          <button id="btn-load-browser" class="sidebar-menu-item" title="Muat Rangkaian dari Browser (LocalStorage)" aria-label="Muat Rangkaian dari Browser">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Muat dari Browser
+          </button>
+          <button id="btn-guide" class="sidebar-menu-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Panduan Penggunaan
+          </button>
+          <button id="btn-about" class="sidebar-menu-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Informasi SMK N 1 Padang
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- LIBRARY PANEL -->
+    <aside id="library-panel" class="library-panel">
+      <div class="library-header">
+        <h3>Library Komponen Teknik</h3>
+        <button id="library-close" class="btn btn-icon" title="Tutup Library Komponen" aria-label="Tutup Library Komponen">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="library-search-container">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="library-search" class="library-search" placeholder="Cari komponen...">
+      </div>
+      <div id="library-filter" class="library-filter">
+        <!-- Filter buttons generated by JS -->
+      </div>
+      <div id="library-components" class="library-components">
+        <!-- Components generated by JS -->
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="main-content">
+      <!-- Material Info Bar & Learning Panel -->
+      <div id="material-info" class="material-info" style="display:none;">
+        <div class="material-sticky-header">
+          <div class="material-info-header">
+            <div class="material-info-title-group">
+              <span id="material-badge" class="material-badge">Materi</span>
+              <h2 id="material-title" class="material-info-title">Judul Materi</h2>
+            </div>
+            <div class="material-info-actions">
+              <button id="btn-load-preset" class="btn btn-primary btn-load-preset" title="Muat Rangkaian Contoh Materi Ini ke Area Kerja" aria-label="Muat Contoh Rangkaian ke Area Kerja">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                <span class="btn-text">Muat Contoh<span class="btn-text-extra"> Rangkaian</span></span>
+              </button>
+              <button id="btn-to-workspace" class="btn btn-secondary btn-to-workspace" title="Buka Area Kerja Simulasi" aria-label="Area Kerja" data-action="workspace">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span class="btn-text">Area Kerja</span>
+              </button>
+              <button id="close-material-info" class="btn btn-icon" title="Tutup Panel Materi" aria-label="Tutup Panel Materi">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Material Tabs Navigation -->
+          <div class="material-tabs-nav">
+            <button class="material-tab-btn active" data-tab="theory">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Teori & Prinsip Kerja
+            </button>
+            <button class="material-tab-btn" data-tab="steps">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Langkah Praktikum
+            </button>
+            <button class="material-tab-btn" data-tab="quiz">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Kuis & Refleksi
+            </button>
+            <button class="material-tab-btn" data-tab="analysis">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Analisis & Diagnostik
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 1: Teori & Prinsip Kerja -->
+        <div id="tab-content-theory" class="material-tab-panel active">
+          <p id="material-description" class="material-info-desc"></p>
+          <div class="material-info-details">
+            <div class="material-info-section">
+              <h4>Tujuan Pembelajaran (TITL):</h4>
+              <ul id="objectives-list"></ul>
+            </div>
+            <div class="material-info-section">
+              <h4>Komponen & Simbol Standar:</h4>
+              <ul id="component-list-items"></ul>
+            </div>
+          </div>
+          <div id="material-extended-theory" class="material-extended-theory"></div>
+        </div>
+
+        <!-- Tab 2: Langkah Praktikum -->
+        <div id="tab-content-steps" class="material-tab-panel">
+          <div id="material-steps-container" class="material-steps-container"></div>
+        </div>
+
+        <!-- Tab 3: Kuis & Refleksi -->
+        <div id="tab-content-quiz" class="material-tab-panel">
+          <div id="quiz-container" class="quiz-container"></div>
+        </div>
+
+        <!-- Tab 4: Analisis & Diagnostik -->
+        <div id="tab-content-analysis" class="material-tab-panel">
+          <div id="analysis-container" class="analysis-container"></div>
+        </div>
+      </div>
+
+      <!-- Workspace Area -->
+      <div id="workspace-area" class="workspace-area">
+        <!-- Workspace Toolbar -->
+        <div id="workspace-toolbar" class="workspace-toolbar">
+          <div class="toolbar-left">
+            <button id="btn-show-material" class="btn btn-tool btn-tool-primary btn-show-material" title="Buka Materi Pembelajaran" aria-label="Buka Materi Pembelajaran" style="display:none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <span class="btn-text">Buka Materi</span>
+            </button>
+            <span id="component-count" class="toolbar-info">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              Komponen: <strong>0</strong>
+            </span>
+            <span class="toolbar-divider-v"></span>
+            <span id="connection-count" class="toolbar-info">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Koneksi: <strong>0</strong>
+            </span>
+            <span class="toolbar-divider-v"></span>
+            <span id="zoom-level" class="toolbar-info">Zoom: 100%</span>
+            <span class="toolbar-divider-v"></span>
+            <!-- Legenda Jaringan -->
+            <div class="network-legend" title="Standar Jalur Rangkaian">
+              <span class="legend-item"><span class="legend-dot legend-pneumatic"></span>Pneumatik (Udara)</span>
+              <span class="legend-item"><span class="legend-dot legend-electric"></span>Elektrikal (24V DC)</span>
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button id="btn-undo" class="btn btn-tool" title="Batal (Ctrl+Z)" aria-label="Batalkan Aksi Terakhir (Undo)" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+              <span class="btn-text">Batal</span>
+            </button>
+            <button id="btn-redo" class="btn btn-tool" title="Ulang (Ctrl+Y)" aria-label="Ulangi Aksi Terakhir (Redo)" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+              <span class="btn-text">Ulang</span>
+            </button>
+            <span class="toolbar-divider-v"></span>
+            <button id="zoom-in" class="btn btn-tool" title="Perbesar (Ctrl +)" aria-label="Perbesar Tampilan">+</button>
+            <button id="zoom-out" class="btn btn-tool" title="Perkecil (Ctrl -)" aria-label="Perkecil Tampilan">−</button>
+            <button id="zoom-fit" class="btn btn-tool" title="Sesuaikan Tampilan" aria-label="Sesuaikan Tampilan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
+            <span class="toolbar-divider-v"></span>
+            <button id="rotate-selected" class="btn btn-tool" title="Putar Komponen Terpilih 90° (R)" aria-label="Putar Komponen Terpilih 90 Derajat" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span class="btn-text">Putar</span>
+            </button>
+            <button id="delete-selected" class="btn btn-tool btn-tool-danger" title="Hapus Komponen / Koneksi Terpilih (Del)" aria-label="Hapus Komponen atau Koneksi Terpilih" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span class="btn-text">Hapus</span>
+            </button>
+            <button id="delete-all" class="btn btn-tool btn-tool-danger" title="Hapus Semua Komponen & Koneksi" aria-label="Hapus Semua Komponen dan Koneksi">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span class="btn-text">Hapus Semua</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SVG Canvas Workspace -->
+        <div id="workspace-container" class="workspace-container">
+          <!-- Floating Connection Status Banner -->
+          <div id="connection-banner" class="connection-banner" style="display:none;">
+            <div class="connection-banner-info">
+              <span class="connection-pulse"></span>
+              <span id="connection-banner-text">Menyambungkan Port: [V1 : 2(A)] → Pilih Port Tujuan atau Garis Cabang</span>
+            </div>
+            <button id="btn-cancel-connection" class="btn btn-sm btn-banner-cancel" title="Batalkan Sambungan (Esc)">Batalkan (Esc)</button>
+          </div>
+
+          <svg id="workspace-svg" class="workspace-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-small" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.5"/>
+              </pattern>
+              <pattern id="grid-large" width="100" height="100" patternUnits="userSpaceOnUse">
+                <rect width="100" height="100" fill="url(#grid-small)"/>
+                <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+              </pattern>
+              <!-- Arrow Marker for Directional Flow -->
+              <marker id="flow-arrow-pneu" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 L2,3 Z" fill="#0284c7"/>
+              </marker>
+              <marker id="flow-arrow-elec" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 L2,3 Z" fill="#eab308"/>
+              </marker>
+            </defs>
+            <rect id="workspace-bg" width="5000" height="5000" fill="#f8fafc"/>
+            <rect id="workspace-grid" width="5000" height="5000" fill="url(#grid-large)"/>
+            <g id="connections-layer"></g>
+            <g id="junctions-layer"></g>
+            <g id="temp-connection-layer"></g>
+            <g id="components-layer"></g>
+          </svg>
+
+          <!-- Empty Workspace Callout -->
+          <div id="empty-workspace-msg" class="empty-workspace-msg">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="3" x2="8" y2="21"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            <h3>Area Kerja Kosong</h3>
+            <p>Pilih salah satu materi di sidebar kiri untuk memuat contoh rangkaian, atau buka Library untuk menyusun rangkaian sendiri.</p>
+            <div class="empty-actions">
+              <button id="btn-quick-preset-1" class="btn btn-secondary">Contoh Materi 1</button>
+              <button id="btn-quick-preset-2" class="btn btn-secondary">Contoh Materi 2</button>
+              <button id="btn-quick-preset-3" class="btn btn-secondary">Contoh Materi 3</button>
+              <button id="btn-open-library" class="btn btn-primary">Buka Library Komponen</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULATION CONTROL BAR (Visible in Mode Simulasi) -->
+        <div id="simulation-control-bar" class="simulation-control-bar" style="display: none;">
+          <div class="sim-bar-left">
+            <div class="sim-status-pill">
+              <span class="sim-status-dot pulsing"></span>
+              <span id="sim-live-status-text" class="sim-status-label">Simulasi Aktif (Real-Time)</span>
+            </div>
+            <div class="sim-bar-divider"></div>
+            <button id="btn-sim-play-pause" class="btn btn-sm btn-sim-play" title="Jeda atau Lanjutkan Simulasi">
+              <svg id="sim-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <span id="sim-play-text">Jeda</span>
+            </button>
+            <div class="sim-speed-selector">
+              <span class="sim-speed-label">Kecepatan:</span>
+              <button class="btn btn-sm btn-speed active" data-speed="1.0">1.0x</button>
+              <button class="btn btn-sm btn-speed" data-speed="0.5">0.5x</button>
+              <button class="btn btn-sm btn-speed" data-speed="2.0">2.0x</button>
+            </div>
+            <button id="btn-sim-release-all" class="btn btn-sm btn-sim-action" title="Lepaskan semua tombol yang sedang ditekan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+              <span>Lepaskan Semua Tombol</span>
+            </button>
+          </div>
+          <div class="sim-bar-divider"></div>
+          <!-- Dynamic Interactive Push Buttons & Actuators Bar -->
+          <div class="sim-bar-right">
+            <span class="sim-actuator-bar-title">Tombol Pengoperasian:</span>
+            <div id="sim-interactive-buttons" class="sim-interactive-buttons">
+              <!-- Dynamically populated with active buttons in circuit -->
+              <span class="sim-no-buttons-hint">Tidak ada tombol interaktif di rangkaian</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- PROPERTY PANEL -->
+    <aside id="property-panel" class="property-panel">
+      <div class="property-header">
+        <h3>Properti Komponen</h3>
+        <button id="property-close" class="btn btn-icon" title="Tutup Properti Komponen" aria-label="Tutup Properti Komponen">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="property-content" class="property-content">
+        <div class="property-empty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p>Pilih komponen di area kerja untuk melihat dan mengubah properti</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- MODAL OVERLAY -->
+  <div id="modal-overlay" class="modal-overlay" style="display:none;">
+    <div id="modal-content" class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button id="modal-close" class="btn btn-icon" title="Tutup Jendela" aria-label="Tutup Jendela">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

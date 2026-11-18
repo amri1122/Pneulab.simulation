@@ -1,0 +1,506 @@
+{
+  "timestamp": "2026-11-18T00:47:50.414Z",
+  "allPassed": true,
+  "pageErrors": [],
+  "results": [
+    {
+      "scenario": "1. Six Pushbutton Symbols in Library and Workspace (FluidSIM Standard)",
+      "pass": true,
+      "details": {
+        "libItems": [
+          {
+            "id": "button-no",
+            "found": true,
+            "name": "Tombol Tekan NO (Make)",
+            "desc": "Pushbutton Normally Open momentary (Pin 13-14)"
+          },
+          {
+            "id": "button-no-detent",
+            "found": true,
+            "name": "Tombol Detent NO (Make)",
+            "desc": "Detent switch Normally Open latching (Pin 13-14)"
+          },
+          {
+            "id": "button-nc",
+            "found": true,
+            "name": "Tombol Tekan NC (Break)",
+            "desc": "Pushbutton Normally Closed momentary (Pin 11-12)"
+          },
+          {
+            "id": "button-nc-detent",
+            "found": true,
+            "name": "Tombol Detent NC (Break)",
+            "desc": "Detent switch Normally Closed latching (Pin 11-12)"
+          },
+          {
+            "id": "button-changeover",
+            "found": true,
+            "name": "Tombol Changeover (Push)",
+            "desc": "Pushbutton changeover / SPDT momentary (Pin 11 COM, 12 NC, 14 NO)"
+          },
+          {
+            "id": "button-changeover-detent",
+            "found": true,
+            "name": "Tombol Detent Changeover",
+            "desc": "Detent switch changeover / SPDT latching (Pin 11 COM, 12 NC, 14 NO)"
+          }
+        ],
+        "symbolDetails": [
+          {
+            "id": "button-no",
+            "texts": [
+              "13",
+              "14",
+              "S1"
+            ],
+            "linesCount": 4,
+            "portsCount": 2,
+            "hasEHead": true,
+            "isDetent": false,
+            "actuatorPass": true,
+            "hasLTerminal": true
+          },
+          {
+            "id": "button-no-detent",
+            "texts": [
+              "13",
+              "14",
+              "S2"
+            ],
+            "linesCount": 4,
+            "portsCount": 2,
+            "hasEHead": true,
+            "isDetent": true,
+            "actuatorPass": true,
+            "hasLTerminal": true
+          },
+          {
+            "id": "button-nc",
+            "texts": [
+              "11",
+              "12",
+              "S3"
+            ],
+            "linesCount": 3,
+            "portsCount": 2,
+            "hasEHead": true,
+            "isDetent": false,
+            "actuatorPass": true,
+            "hasLTerminal": true
+          },
+          {
+            "id": "button-nc-detent",
+            "texts": [
+              "11",
+              "12",
+              "S4"
+            ],
+            "linesCount": 3,
+            "portsCount": 2,
+            "hasEHead": true,
+            "isDetent": true,
+            "actuatorPass": true,
+            "hasLTerminal": true
+          },
+          {
+            "id": "button-changeover",
+            "texts": [
+              "12",
+              "14",
+              "11",
+              "S5"
+            ],
+            "linesCount": 4,
+            "portsCount": 3,
+            "hasEHead": true,
+            "isDetent": false,
+            "actuatorPass": true,
+            "hasLTerminal": true
+          },
+          {
+            "id": "button-changeover-detent",
+            "texts": [
+              "12",
+              "14",
+              "11",
+              "S6"
+            ],
+            "linesCount": 4,
+            "portsCount": 3,
+            "hasEHead": true,
+            "isDetent": true,
+            "actuatorPass": true,
+            "hasLTerminal": true
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "2. Terminal Precision & Stub Distance <= 1px",
+      "pass": true,
+      "details": [
+        {
+          "compDef": "button-no",
+          "portName": "13",
+          "portNumber": 1,
+          "portPos": {
+            "x": 0,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-no",
+          "portName": "14",
+          "portNumber": 2,
+          "portPos": {
+            "x": 0,
+            "y": 25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": 25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-no-detent",
+          "portName": "13",
+          "portNumber": 1,
+          "portPos": {
+            "x": 0,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-no-detent",
+          "portName": "14",
+          "portNumber": 2,
+          "portPos": {
+            "x": 0,
+            "y": 25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": 25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-nc",
+          "portName": "11",
+          "portNumber": 1,
+          "portPos": {
+            "x": 0,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-nc",
+          "portName": "12",
+          "portNumber": 2,
+          "portPos": {
+            "x": 0,
+            "y": 25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": 25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-nc-detent",
+          "portName": "11",
+          "portNumber": 1,
+          "portPos": {
+            "x": 0,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-nc-detent",
+          "portName": "12",
+          "portNumber": 2,
+          "portPos": {
+            "x": 0,
+            "y": 25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": 25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-changeover",
+          "portName": "11",
+          "portNumber": 1,
+          "portPos": {
+            "x": 0,
+            "y": 25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": 25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-changeover",
+          "portName": "12",
+          "portNumber": 2,
+          "portPos": {
+            "x": -12,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": -12,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-changeover",
+          "portName": "14",
+          "portNumber": 3,
+          "portPos": {
+            "x": 12,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": 12,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-changeover-detent",
+          "portName": "11",
+          "portNumber": 1,
+          "portPos": {
+            "x": 0,
+            "y": 25
+          },
+          "circlePos": {
+            "cx": 0,
+            "cy": 25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-changeover-detent",
+          "portName": "12",
+          "portNumber": 2,
+          "portPos": {
+            "x": -12,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": -12,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        },
+        {
+          "compDef": "button-changeover-detent",
+          "portName": "14",
+          "portNumber": 3,
+          "portPos": {
+            "x": 12,
+            "y": -25
+          },
+          "circlePos": {
+            "cx": 12,
+            "cy": -25
+          },
+          "minStubDist": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "scenario": "3. Momentary Simulation (NO & NC press and release)",
+      "pass": true,
+      "details": {
+        "s0": {
+          "lampNO": false,
+          "lampNC": true
+        },
+        "s1": {
+          "lampNO": true,
+          "lampNC": true
+        },
+        "s2": {
+          "lampNO": false,
+          "lampNC": true
+        },
+        "s3": {
+          "lampNO": false,
+          "lampNC": false
+        },
+        "s4": {
+          "lampNO": false,
+          "lampNC": true
+        }
+      }
+    },
+    {
+      "scenario": "4. Detent Switch Simulation (Latching NO & NC single click toggle)",
+      "pass": true,
+      "details": {
+        "s0": {
+          "lampNO": false,
+          "lampNC": true
+        },
+        "s1": {
+          "isPressed": true,
+          "lampNO": true,
+          "lampNC": true
+        },
+        "s2": {
+          "isPressed": false,
+          "lampNO": false,
+          "lampNC": true
+        },
+        "s3": {
+          "isPressed": true,
+          "lampNO": false,
+          "lampNC": false
+        },
+        "s4": {
+          "isPressed": false,
+          "lampNO": false,
+          "lampNC": true
+        }
+      }
+    },
+    {
+      "scenario": "5. Changeover Simulation (Normal COM->NC, Pressed COM->NO, Detent toggle)",
+      "pass": true,
+      "details": {
+        "s0": {
+          "lampNC": true,
+          "lampNO": false
+        },
+        "s1": {
+          "lampNC": false,
+          "lampNO": true
+        },
+        "s2": {
+          "lampNC": true,
+          "lampNO": false
+        },
+        "d0": {
+          "lampNC": true,
+          "lampNO": false
+        },
+        "d1": {
+          "lampNC": false,
+          "lampNO": true
+        },
+        "d2": {
+          "lampNC": true,
+          "lampNO": false
+        }
+      }
+    },
+    {
+      "scenario": "6. Save & Load Circuit Persistence for New Buttons",
+      "pass": true,
+      "details": {
+        "cleared": 0,
+        "loaded": [
+          {
+            "defId": "button-no",
+            "label": "PB1",
+            "portsCount": 2
+          },
+          {
+            "defId": "button-no-detent",
+            "label": "SW1",
+            "portsCount": 2
+          },
+          {
+            "defId": "button-changeover",
+            "label": "CO1",
+            "portsCount": 3
+          }
+        ],
+        "pass": true
+      }
+    },
+    {
+      "scenario": "7. Presets 1-3 Compatibility & Button S1 Electropneumatic Actuation",
+      "pass": true,
+      "details": {
+        "dComps": 4,
+        "dValid": true,
+        "indComps": 5,
+        "indValid": true,
+        "elComps": 8,
+        "elValid": true,
+        "solPressed": true,
+        "pass": true
+      }
+    },
+    {
+      "scenario": "8. Standalone index_single.html & Responsive Viewports (1366, 1280, 768, 390)",
+      "pass": true,
+      "details": {
+        "singleResult": {
+          "hasComps": true,
+          "diag": {
+            "valid": false,
+            "checks": [
+              {
+                "status": "fail",
+                "title": "Catu Daya DC Tidak Ditemukan",
+                "desc": "Rangkaian memiliki komponen elektrikal namun belum ada catu daya 24V DC."
+              }
+            ],
+            "stats": {
+              "components": 2,
+              "connections": 0,
+              "pneumaticLines": 0,
+              "electricalLines": 0
+            }
+          }
+        },
+        "pageErrorsCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "[modular] Scenario 1: Library Cards clean of contact numbers",
+    "passed": true,
+    "details": "8 komponen target bebas dari angka kontak di library, relai tetap mempertahankan terminal A1/A2"
+  },
+  {
+    "name": "[modular] Scenario 2: Workspace symbols clean of contact numbers",
+    "passed": true,
+    "details": "8 komponen di workspace bebas angka kontak pada SVG simbol, label komponen tetap ada"
+  },
+  {
+    "name": "[modular] Scenario 3: Presets 1, 2, 3 Compatibility & diagnostics valid",
+    "passed": true,
+    "details": "Direct: 4 comps, Indirect: 5 comps, Electro: 8 comps (S1 clean: true)"
+  },
+  {
+    "name": "[modular] Scenario 4: Pushbutton & Relay interactive simulation",
+    "passed": true,
+    "details": "NO: s0=false, s1=true, s2=false | NC: s0=true, s3=false, s4=true"
+  },
+  {
+    "name": "[modular] Scenario 5: Save & load persistence",
+    "passed": true,
+    "details": "Cleared: 0, Loaded: 3, Bad labels found: 0"
+  },
+  {
+    "name": "[single] Scenario 1: Library Cards clean of contact numbers",
+    "passed": true,
+    "details": "8 komponen target bebas dari angka kontak di library, relai tetap mempertahankan terminal A1/A2"
+  },
+  {
+    "name": "[single] Scenario 2: Workspace symbols clean of contact numbers",
+    "passed": true,
+    "details": "8 komponen di workspace bebas angka kontak pada SVG simbol, label komponen tetap ada"
+  },
+  {
+    "name": "[single] Scenario 3: Presets 1, 2, 3 Compatibility & diagnostics valid",
+    "passed": true,
+    "details": "Direct: 4 comps, Indirect: 5 comps, Electro: 8 comps (S1 clean: true)"
+  },
+  {
+    "name": "[single] Scenario 4: Pushbutton & Relay interactive simulation",
+    "passed": true,
+    "details": "NO: s0=false, s1=true, s2=false | NC: s0=true, s3=false, s4=true"
+  },
+  {
+    "name": "[single] Scenario 5: Save & load persistence",
+    "passed": true,
+    "details": "Cleared: 0, Loaded: 3, Bad labels found: 0"
+  },
+  {
+    "name": "Scenario 6: Viewport Check Desktop Compact (1280x600) on Modular (index.html)",
+    "passed": true,
+    "details": "Console pageErrors count: 0"
+  },
+  {
+    "name": "Scenario 6: Viewport Check Desktop Compact (1280x600) on Bundled (index_single.html)",
+    "passed": true,
+    "details": "Console pageErrors count: 0"
+  },
+  {
+    "name": "Scenario 6: Viewport Check Smartphone Mobile (390x844) on Modular (index.html)",
+    "passed": true,
+    "details": "Console pageErrors count: 0"
+  },
+  {
+    "name": "Scenario 6: Viewport Check Smartphone Mobile (390x844) on Bundled (index_single.html)",
+    "passed": true,
+    "details": "Console pageErrors count: 0"
+  }
+]

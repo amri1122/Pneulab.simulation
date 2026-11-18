@@ -1,0 +1,369 @@
+{
+  "timestamp": "2026-11-18T00:33:51.227Z",
+  "allPassed": true,
+  "pageErrors": [],
+  "results": [
+    {
+      "scenario": "1. Relay & Solenoid Coil Symbols (FluidSIM)",
+      "pass": true,
+      "details": {
+        "rPass": true,
+        "sPass": true,
+        "symCheck": {
+          "rBoxFill": "#ffffff",
+          "rBoxStroke": "#1e293b",
+          "rLinesCount": 2,
+          "rLines": [
+            {
+              "x1": "0",
+              "y1": "-16",
+              "x2": "0",
+              "y2": "-25"
+            },
+            {
+              "x1": "0",
+              "y1": "16",
+              "x2": "0",
+              "y2": "25"
+            }
+          ],
+          "rPorts": [
+            {
+              "id": "port-relay_1_ooth8-1",
+              "r": "3.5",
+              "fill": "rgb(255, 255, 255)",
+              "stroke": "rgb(30, 41, 59)"
+            },
+            {
+              "id": "port-relay_1_ooth8-2",
+              "r": "3.5",
+              "fill": "rgb(255, 255, 255)",
+              "stroke": "rgb(30, 41, 59)"
+            }
+          ],
+          "rTexts": [
+            "A1",
+            "A2",
+            "K1"
+          ],
+          "sBoxFill": "#ffffff",
+          "sLines": [
+            {
+              "x1": "-12",
+              "y1": "16",
+              "x2": "12",
+              "y2": "-16",
+              "dash": null
+            },
+            {
+              "x1": "0",
+              "y1": "-16",
+              "x2": "0",
+              "y2": "-25",
+              "dash": null
+            },
+            {
+              "x1": "0",
+              "y1": "16",
+              "x2": "0",
+              "y2": "25",
+              "dash": null
+            },
+            {
+              "x1": "12",
+              "y1": "0",
+              "x2": "23",
+              "y2": "0",
+              "dash": "2.5,2"
+            }
+          ],
+          "sPolygons": [
+            "23,-7 23,7 30,0",
+            "37,-7 37,7 30,0"
+          ],
+          "sPorts": [
+            {
+              "id": "port-solenoid-coil_2_gjew9-1",
+              "r": "3.5",
+              "fill": "rgb(255, 255, 255)",
+              "stroke": "rgb(30, 41, 59)"
+            },
+            {
+              "id": "port-solenoid-coil_2_gjew9-2",
+              "r": "3.5",
+              "fill": "rgb(255, 255, 255)",
+              "stroke": "rgb(30, 41, 59)"
+            }
+          ],
+          "sTexts": [
+            "A1",
+            "A2",
+            "Y1"
+          ]
+        }
+      }
+    },
+    {
+      "scenario": "2. Library Electrical Components",
+      "pass": true,
+      "details": {
+        "items": [
+          {
+            "id": "dc-source",
+            "title": "Sumber Tegangan +24V",
+            "desc": "Terminal sumber tegangan +24V DC"
+          },
+          {
+            "id": "terminal-0v",
+            "title": "Terminal 0V (Netral)",
+            "desc": "Titik netral / 0V (GND)"
+          },
+          {
+            "id": "button-no",
+            "title": "Tombol Tekan NO",
+            "desc": "Push Button Normally Open (Pin 13-14)"
+          },
+          {
+            "id": "button-nc",
+            "title": "Tombol Tekan NC",
+            "desc": "Push Button Normally Closed (Pin 11-12)"
+          },
+          {
+            "id": "relay",
+            "title": "Relai Kontrol (K1)",
+            "desc": "Kumparan relai elektromagnetik (Terminal A1-A2)"
+          },
+          {
+            "id": "relay-contact-no",
+            "title": "Kontak Relai NO",
+            "desc": "Kontak bantu Normally Open relai (Pin 13-14)"
+          },
+          {
+            "id": "relay-contact-nc",
+            "title": "Kontak Relai NC",
+            "desc": "Kontak bantu Normally Closed relai (Pin 21-22)"
+          },
+          {
+            "id": "timer-on-delay",
+            "title": "Relai Timer On-Delay",
+            "desc": "Relai penunda waktu hidup / Switch-On Delay (Terminal A1-A2)"
+          },
+          {
+            "id": "timer-off-delay",
+            "title": "Relai Timer Off-Delay",
+            "desc": "Relai penunda waktu mati / Switch-Off Delay (Terminal A1-A2)"
+          },
+          {
+            "id": "counter",
+            "title": "Relai Counter (Pencacah)",
+            "desc": "Relai counter elektropneumatik dengan reset (A1-A2, R1-R2)"
+          },
+          {
+            "id": "solenoid-coil",
+            "title": "Kumparan Solenoid (Y1)",
+            "desc": "Kumparan aktuasi katup pneumatik (Terminal A1-A2)"
+          },
+          {
+            "id": "limit-switch",
+            "title": "Limit Switch Mekanik",
+            "desc": "Saklar batas mekanik tuas roller (1S1 / 1S2)"
+          },
+          {
+            "id": "indicator-lamp",
+            "title": "Lampu Indikator (H1)",
+            "desc": "Lampu sinyal status panel kontrol (Terminal X1-X2)"
+          }
+        ],
+        "hasOnDelay": true,
+        "hasOffDelay": true,
+        "hasCounter": true,
+        "comps": [
+          {
+            "id": "timer-on-delay_1_5vq0l",
+            "defId": "timer-on-delay",
+            "label": "K2"
+          },
+          {
+            "id": "timer-off-delay_2_qzvjc",
+            "defId": "timer-off-delay",
+            "label": "K3"
+          },
+          {
+            "id": "counter_3_fordf",
+            "defId": "counter",
+            "label": "K4"
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "3. Timer On-Delay Symbol (X on left, 5s on right, A1/A2 stubs)",
+      "pass": true,
+      "details": [
+        "5s",
+        "A1",
+        "A2",
+        "K2"
+      ]
+    },
+    {
+      "scenario": "4. Timer Off-Delay Symbol (Black rect on left, 5s on right, A1/A2 stubs)",
+      "pass": true,
+      "details": [
+        "5s",
+        "A1",
+        "A2",
+        "K3"
+      ]
+    },
+    {
+      "scenario": "5. Relay Counter Symbol (Mechanism circle, 0/5 count, 4 ports A1/A2/R1/R2)",
+      "pass": true,
+      "details": {
+        "cntText": [
+          "0/5",
+          "A1",
+          "R1",
+          "A2",
+          "R2",
+          "K4"
+        ],
+        "ports": 4
+      }
+    },
+    {
+      "scenario": "6. SimEngine Timer On-Delay Logic (400ms delay, timeout activation, immediate cutoff, cancellation)",
+      "pass": true,
+      "details": {
+        "state0": {
+          "relayActive": false,
+          "lampLit": false
+        },
+        "state1": {
+          "relayActive": false,
+          "lampLit": false
+        },
+        "state2": {
+          "relayActive": true,
+          "lampLit": true
+        },
+        "state3": {
+          "relayActive": false,
+          "lampLit": false
+        },
+        "state4": {
+          "relayActive": false,
+          "lampLit": false
+        }
+      }
+    },
+    {
+      "scenario": "7. SimEngine Timer Off-Delay Logic (immediate on, sustained during 400ms off-delay, turnoff on timeout, re-trigger cancel)",
+      "pass": true,
+      "details": {
+        "state0": {
+          "relayActive": false,
+          "lampLit": false
+        },
+        "state1": {
+          "relayActive": true,
+          "lampLit": true
+        },
+        "state2": {
+          "relayActive": true,
+          "lampLit": true
+        },
+        "state3": {
+          "relayActive": false,
+          "lampLit": false
+        },
+        "state4": {
+          "relayActive": true,
+          "lampLit": true
+        }
+      }
+    },
+    {
+      "scenario": "8. SimEngine Relay Counter Logic (rising edge counting 1->2->3, trip at preset, contact closure, reset back to 0)",
+      "pass": true,
+      "details": {
+        "st0": {
+          "count": 0,
+          "relay": false,
+          "lamp": false
+        },
+        "st1": {
+          "count": 1,
+          "relay": false,
+          "lamp": false
+        },
+        "st2": {
+          "count": 2,
+          "relay": false,
+          "lamp": false
+        },
+        "st3": {
+          "count": 3,
+          "relay": true,
+          "lamp": true
+        },
+        "stReset": {
+          "count": 0,
+          "relay": false,
+          "lamp": false
+        }
+      }
+    },
+    {
+      "scenario": "9. Property Panel, Validation (0.1-999 / 1-999) & Save/Load Persistence",
+      "pass": true,
+      "details": {
+        "timerInputsExist": true,
+        "timerValidPass": true,
+        "timerInvalidPass": true,
+        "counterInputsExist": true,
+        "counterValidPass": true,
+        "counterInvalidPass": true,
+        "clearedCount": 0,
+        "saveLoadPass": true,
+        "loadedTimer": {
+          "defId": "timer-on-delay",
+          "label": "K2",
+          "properties": {
+            "timeSec": 3.5,
+            "relayRef": "KT1",
+            "relayId": "KT1",
+            "state": "de-energized"
+          }
+        },
+        "loadedCounter": {
+          "defId": "counter",
+          "label": "K4",
+          "properties": {
+            "presetCount": 8,
+            "relayRef": "KC1",
+            "relayId": "KC1",
+            "state": "de-energized"
+          }
+        }
+      }
+    },
+    {
+      "scenario": "10. Standalone index_single.html, Presets 1-3 & Responsive (1366, 1280, 390)",
+      "pass": true,
+      "details": {
+        "singleResult": {
+          "p1Comps": 4,
+          "p1Valid": true,
+          "p2Comps": 5,
+          "p2Valid": true,
+          "p3Comps": 8,
+          "p3Valid": true,
+          "hasTimer": true,
+          "hasCounter": true
+        },
+        "pageErrorsCount": 0
+      }
+    }
+  ]
+}
